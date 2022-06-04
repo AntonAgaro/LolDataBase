@@ -5,7 +5,7 @@
       <h3 class="champion-page__subtitle">{{championInfo.title}}</h3>
     </div>
     <div class="champion-page__img-wrapper">
-      <img class="champion-page__img" :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championInfo.id}_0.jpg`" :alt="championInfo.name">
+      <img width="1215" height="717" ref="championImg" class="champion-page__img" :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championInfo.id}_0.jpg`" :alt="championInfo.name">
     </div>
     <div class="champion-page__descr">
       {{ championInfo.lore }}
@@ -21,6 +21,8 @@ const route = useRoute();
 const store = useStore();
 const getChampion = computed(() => store.getters.getChampion(route.params.id))
 const championInfo = ref(null);
+const championImg = ref(null);
+
 
 async function fetchChampionData() {
   const data = await fetch(`https://ddragon.leagueoflegends.com/cdn/12.10.1/data/ru_RU/champion/${route.params.id}.json`);
@@ -35,7 +37,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .champion-page {
-
+  max-width: 1200px;
+  margin: 0 auto;
   &__titles {
     padding: 10px;
     display: flex;
@@ -47,7 +50,9 @@ onMounted(() => {
   &__img-wrapper {
     height: 0;
     position: relative;
-    padding-top: calc(9 / 16 * 100%);
+    display: flex;
+    padding-top: calc(717 / 1215 * 100%);
+    justify-content: center;
   }
 
   &__img {
@@ -55,11 +60,12 @@ onMounted(() => {
     top: 0;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 16/9;
+    aspect-ratio: auto;
   }
 
   &__descr {
     padding: 20px;
+    text-indent: 10px;
   }
 }
 </style>
