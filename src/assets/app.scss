@@ -1,0 +1,36 @@
+$body-color: #14213d;
+$main-color: #1d3557;
+$text-color: #f1faee;
+$active-color: #fca311;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $body-color;
+  color: $text-color;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
+.header, .footer {
+  padding-left: 20px;
+  min-height: 50px;
+  background: $main-color;
+}
